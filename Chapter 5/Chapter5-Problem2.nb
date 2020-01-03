@@ -1,0 +1,317 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     10819,        309]
+NotebookOptionsPosition[      9674,        283]
+NotebookOutlinePosition[     10047,        299]
+CellTagsIndexPosition[     10004,        296]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Chapter 5 - Problem 2", "Title",
+ CellChangeTimes->{{3.7832672936590314`*^9, 
+  3.7832672981871395`*^9}},ExpressionUUID->"3b84a078-4520-4034-989c-\
+5203cfb7d069"],
+
+Cell[TextData[{
+ "Find the transfer matrix across a delta gap (a system defined as a \
+propagation in the vacuum a distance ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    FractionBox["L", "2"], ",", " ", 
+    RowBox[{
+    "followed", " ", "by", " ", "crossing", " ", "of", " ", "the", " ", 
+     "delta", " ", "potential", " "}]}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "b509b483-8af6-4dd5-a485-7988b4326f96"],
+ "\[Lambda]\[Delta](x) and finally another propagation in the vacuum of a \
+distance ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     FractionBox["L", "2"], ")"}], "."}], TraditionalForm]],
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "d08e9f67-31dc-4d4c-b9cd-06fcaa211ee9"]
+}], "Text",
+ CellChangeTimes->{{3.783267299740864*^9, 
+  3.7832673798415694`*^9}},ExpressionUUID->"638fe8eb-b334-4244-99b4-\
+55801857e7a3"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", "Constants", " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"e", " ", "=", " ", 
+   RowBox[{"1.60217", " ", "*", " ", 
+    SuperscriptBox["10", 
+     RowBox[{"-", "19"}]]}]}], ";", " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"1", " ", "electron", " ", "volt", 
+     RowBox[{"(", "ev", ")"}]}], " ", "=", " ", 
+    RowBox[{"e", " ", "Joules"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"h", " ", "=", " ", 
+   RowBox[{"6.62607004", " ", "*", " ", 
+    SuperscriptBox["10", 
+     RowBox[{"-", "34"}]]}]}], " ", ";", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"planck", "'"}], "s", " ", "constant"}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"m", " ", "=", " ", 
+   RowBox[{"9.10938", " ", "*", " ", 
+    SuperscriptBox["10", 
+     RowBox[{"-", "31"}]]}]}], ";", " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{"effective", " ", "mass", " ", "of", " ", "an", " ", "electron"}], 
+   " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"\[HBar]", " ", "=", " ", 
+   FractionBox["h", 
+    RowBox[{"2", "*", "Pi"}]]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"alpha", " ", "=", " ", 
+    RowBox[{
+     RowBox[{"Sqrt", "[", 
+      FractionBox[
+       RowBox[{"2", "*", "m", "*", "e"}], 
+       SuperscriptBox["\[HBar]", "2"]], "]"}], " ", "*", " ", 
+     SuperscriptBox["10", 
+      RowBox[{"-", "9"}]]}]}], ";"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{"PI", " ", "and", " ", "PP", " ", "Matrices"}], " ", 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"PI", "[", 
+    RowBox[{"kL_", ",", "kR_"}], "]"}], "=", " ", 
+   RowBox[{"MatrixExp", "[", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"1", "/", "2"}], ")"}], " ", "*", " ", 
+     RowBox[{"Log", "[", 
+      RowBox[{"kL", "/", "kR"}], "]"}], " ", "*", " ", 
+     RowBox[{"(", " ", 
+      RowBox[{
+       RowBox[{"PauliMatrix", "[", "1", "]"}], " ", "-", " ", 
+       RowBox[{"IdentityMatrix", "[", "2", "]"}]}], ")"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"PP", " ", "[", 
+    RowBox[{"kx_", ",", "l_"}], "]"}], " ", "=", " ", 
+   RowBox[{"MatrixExp", "[", 
+    RowBox[{
+     RowBox[{"-", "I"}], " ", "*", " ", "kx", " ", "*", " ", "l", " ", "*", 
+     " ", 
+     RowBox[{"PauliMatrix", "[", "3", "]"}]}], "]"}]}], ";", " "}]}], "Input",
+ CellChangeTimes->{{3.7832673830728755`*^9, 3.78326740197546*^9}},
+ CellLabel->"In[67]:=",ExpressionUUID->"d27e7124-5442-4c44-90ae-bb2753f86f86"],
+
+Cell[TextData[StyleBox["Based on Chapter 5 - Problem 1, we know that we can \
+use a shortcut everytime that we see a delta potential (by using the pdelta \
+function instead).",
+ FontWeight->"Bold",
+ FontVariations->{"Underline"->True}]], "Text",
+ CellChangeTimes->{{3.783267406564855*^9, 
+  3.7832674504018855`*^9}},ExpressionUUID->"6967332a-9fdf-49a8-924f-\
+5db77d70d937"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Pdelta", "[", "\[Lambda]_", "]"}], " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"1", " ", "+", " ", 
+        FractionBox[
+         RowBox[{"(", 
+          RowBox[{"I", "*", "\[Lambda]", "*", "alphae"}], ")"}], 
+         RowBox[{"2", "*", 
+          RowBox[{"Sqrt", "[", "en", "]"}]}]]}], " ", ",", " ", 
+       FractionBox[
+        RowBox[{"(", 
+         RowBox[{"I", "*", "\[Lambda]", "*", "alphae"}], ")"}], 
+        RowBox[{"2", "*", 
+         RowBox[{"Sqrt", "[", "en", "]"}]}]]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", "1"}], " ", "*", 
+        FractionBox[
+         RowBox[{"(", 
+          RowBox[{"I", "*", "\[Lambda]", "*", "alphae"}], ")"}], 
+         RowBox[{"2", "*", 
+          RowBox[{"Sqrt", "[", "en", "]"}]}]]}], " ", ",", " ", 
+       RowBox[{"1", " ", "-", " ", 
+        FractionBox[
+         RowBox[{"(", 
+          RowBox[{"I", "*", "\[Lambda]", "*", "alphae"}], ")"}], 
+         RowBox[{"2", "*", 
+          RowBox[{"Sqrt", "[", "en", "]"}]}]]}]}], "}"}]}], "}"}]}], 
+  ";"}]], "Input",
+ CellLabel->"In[72]:=",ExpressionUUID->"8c569398-3343-4468-84f7-2e731647e31f"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+    "Now", " ", "all", " ", "we", " ", "need", " ", "is", " ", "our", " ", 
+     "k", " ", 
+     RowBox[{"values", ".", " ", "we"}], " ", "know", " ", "that", " ", "it", 
+     " ", "starts", " ", "delta", " ", "gap", " ", "starts", " ", "and", " ", 
+     "ends", " ", "in", " ", "a", " ", 
+     RowBox[{"vacuum", ".", " ", "i", ".", "e", ".", " ", "Vo"}]}], " ", "=", 
+    " ", 
+    RowBox[{"0", " ", "eV"}]}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"k\[Delta]", " ", "=", " ", 
+     RowBox[{"alpha", " ", "*", " ", 
+      RowBox[{"Sqrt", "[", 
+       RowBox[{"en", " ", "-", " ", "\[Lambda]"}], "]"}]}]}], ";"}], " ", 
+   RowBox[{"(*", " ", 
+    RowBox[{"the", " ", 
+     RowBox[{"height", "/", "depth"}], " ", "is", " ", "\[Lambda]"}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"k", " ", "=", " ", 
+     RowBox[{"alpha", " ", "*", " ", 
+      RowBox[{"Sqrt", "[", "en", "]"}]}]}], ";", " ", 
+    RowBox[{"(*", " ", 
+     RowBox[{"in", " ", "the", " ", "vacuum"}], "*)"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.783267471817874*^9, 3.7832675122072344`*^9}, {
+  3.7832677123835926`*^9, 3.783267751229951*^9}, {3.7832678261423883`*^9, 
+  3.7832678796729198`*^9}},
+ CellLabel->"In[73]:=",ExpressionUUID->"1efedc16-48eb-479c-b139-17cf5f3291e3"],
+
+Cell[BoxData[
+ RowBox[{" ", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Let", " ", "M", " ", "represent", " ", "the", " ", "transfer", " ", 
+    "matrix"}], " ", "*)"}]}]], "Input",
+ CellChangeTimes->{{3.7832679070046363`*^9, 
+  3.7832679265683346`*^9}},ExpressionUUID->"a7d3fa4e-6c9f-4c06-b76a-\
+ecbea379ae9c"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"M", " ", "=", " ", 
+  RowBox[{
+   RowBox[{"PP", "[", 
+    RowBox[{"k", ",", " ", 
+     FractionBox["L", "2"]}], "]"}], ".", 
+   RowBox[{"Pdelta", "[", "\[Lambda]", "]"}], ".", 
+   RowBox[{"PP", "[", 
+    RowBox[{"k", ",", 
+     FractionBox["L", "2"]}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.783267890484606*^9, 3.78326793868205*^9}},
+ CellLabel->"In[75]:=",ExpressionUUID->"1531b2f2-37ff-41a2-be01-bc891f587967"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"0.`", "\[VeryThinSpace]", "-", 
+          RowBox[{"5.123155657307106`", " ", "\[ImaginaryI]"}]}], ")"}], " ", 
+        SqrtBox["en"], " ", "L"}]], " ", 
+      RowBox[{"(", 
+       RowBox[{"1", "+", 
+        FractionBox[
+         RowBox[{"\[ImaginaryI]", " ", "alphae", " ", "\[Lambda]"}], 
+         RowBox[{"2", " ", 
+          SqrtBox["en"]}]]}], ")"}]}], ",", 
+     FractionBox[
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"0.`", "\[VeryThinSpace]", "+", 
+         RowBox[{"0.5`", " ", "\[ImaginaryI]"}]}], ")"}], " ", "alphae", " ", 
+       "\[Lambda]"}], 
+      SqrtBox["en"]]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox[
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"0.`", "\[VeryThinSpace]", "+", 
+          RowBox[{"0.5`", " ", "\[ImaginaryI]"}]}], ")"}], " ", "alphae", " ",
+         "\[Lambda]"}], 
+       SqrtBox["en"]]}], ",", 
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"0.`", "\[VeryThinSpace]", "+", 
+          RowBox[{"5.123155657307106`", " ", "\[ImaginaryI]"}]}], ")"}], " ", 
+        SqrtBox["en"], " ", "L"}]], " ", 
+      RowBox[{"(", 
+       RowBox[{"1", "-", 
+        FractionBox[
+         RowBox[{"\[ImaginaryI]", " ", "alphae", " ", "\[Lambda]"}], 
+         RowBox[{"2", " ", 
+          SqrtBox["en"]}]]}], ")"}]}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.7832679393215775`*^9},
+ CellLabel->"Out[75]=",ExpressionUUID->"dd5c84e5-6e2a-4a64-bd0e-125fab2917f2"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{958, 1021},
+WindowMargins->{{Automatic, -8}, {Automatic, 42}},
+Magnification:>1.5 Inherited,
+FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 8, 2019)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 168, 3, 146, "Title",ExpressionUUID->"3b84a078-4520-4034-989c-5203cfb7d069"],
+Cell[751, 27, 871, 24, 134, "Text",ExpressionUUID->"638fe8eb-b334-4244-99b4-55801857e7a3"],
+Cell[1625, 53, 2584, 70, 399, "Input",ExpressionUUID->"d27e7124-5442-4c44-90ae-bb2753f86f86"],
+Cell[4212, 125, 373, 7, 86, "Text",ExpressionUUID->"6967332a-9fdf-49a8-924f-5db77d70d937"],
+Cell[4588, 134, 1229, 35, 141, "Input",ExpressionUUID->"8c569398-3343-4468-84f7-2e731647e31f"],
+Cell[5820, 171, 1352, 32, 160, "Input",ExpressionUUID->"1efedc16-48eb-479c-b139-17cf5f3291e3"],
+Cell[7175, 205, 306, 8, 43, "Input",ExpressionUUID->"a7d3fa4e-6c9f-4c06-b76a-ecbea379ae9c"],
+Cell[CellGroupData[{
+Cell[7506, 217, 441, 11, 70, "Input",ExpressionUUID->"1531b2f2-37ff-41a2-be01-bc891f587967"],
+Cell[7950, 230, 1696, 49, 200, "Output",ExpressionUUID->"dd5c84e5-6e2a-4a64-bd0e-125fab2917f2"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
